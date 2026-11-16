@@ -1,0 +1,47 @@
+PING setup: copy ONE block into ~/.claude/settings.json (Windows: %USERPROFILE%\.claude\settings.json)
+If the file already has a "hooks" section, add the Stop and Notification entries inside it instead.
+Linux without paplay: replace paplay with pw-play.
+
+=== macOS ===
+{
+  "hooks": {
+    "Stop": [
+      { "hooks": [ { "type": "command", "command": "afplay /System/Library/Sounds/Glass.aiff" } ] }
+    ],
+    "Notification": [
+      { "hooks": [ { "type": "command", "command": "afplay /System/Library/Sounds/Ping.aiff" } ] }
+    ]
+  }
+}
+
+=== Linux ===
+{
+  "hooks": {
+    "Stop": [
+      { "hooks": [ { "type": "command", "command": "paplay /usr/share/sounds/freedesktop/stereo/complete.oga" } ] }
+    ],
+    "Notification": [
+      { "hooks": [ { "type": "command", "command": "paplay /usr/share/sounds/freedesktop/stereo/bell.oga" } ] }
+    ]
+  }
+}
+
+=== Windows ===
+{
+  "hooks": {
+    "Stop": [
+      { "hooks": [ { "type": "command", "command": "powershell -c \"(New-Object Media.SoundPlayer 'C:\\Windows\\Media\\tada.wav').PlaySync()\"" } ] }
+    ],
+    "Notification": [
+      { "hooks": [ { "type": "command", "command": "powershell -c \"(New-Object Media.SoundPlayer 'C:\\Windows\\Media\\notify.wav').PlaySync()\"" } ] }
+    ]
+  }
+}
+
+=== Optional: Notification only when Claude needs permission ===
+"Notification": [
+  {
+    "matcher": "permission_prompt",
+    "hooks": [ { "type": "command", "command": "afplay /System/Library/Sounds/Ping.aiff" } ]
+  }
+]
