@@ -1,0 +1,130 @@
+USAGE CHEAT SHEET (copy-paste version)
+Source: https://code.claude.com/docs/en/costs and https://code.claude.com/docs/en/skills. The figures on /usage are approximate.
+
+THE USAGE CHEAT SHEET
+01 / 8
+USAGE
+Find what's
+eating your Claude limit
+in two minutes
+4 STEPS
+/usage
++ CHEAT SHEET
+Stop guessing.
+Look at /usage.
+Then fix the biggest row.
+----------------------------------------
+THE IDEA
+02 / 8
+Stop guessing.
+Read the screen.
+On a subscription plan, /usage shows your plan limits and a breakdown of what counts against them: skills, subagents, plugins and MCP servers, with a suggested fix for each big one.
+THE LOOP · takes two minutes
+Run /usage
+one command
+Read the rows
+biggest share first
+Fix the top one
+/clear, skills, f
+Guessing
+Long chats, unused skills, forgotten servers. You find out when the limit hits.
+/usage
+Every habit gets a row. You fix the one that matters most.
+Good to know: the figures are approximate and come from this machine's sessions only. Shares can overlap, so they don't add up to 100%. Bars are an illustration, not measured numbers.
+----------------------------------------
+STEP 1 OF 4
+03 / 8
+Run /usage
+Type it at the Claude Code prompt. That's the whole step.
+claude
+$   /usage
+1
+The plan bars
+How much of your session and week you have used.
+2
+What's contributing to your usage?
+Rows with a share and a suggested fix, for anything behind 10% or more of your recent usage.
+3
+The MCP servers table
+How much each connected server adds. Press d for the last 24 hours or w for the week.
+Don't see the breakdown? It needs a recent Claude Code and a Pro, Max, Ultra, Team or Enterprise plan. Update Claude Code and try again. On an API key, the Session block at the top (token cost) is your main view.
+----------------------------------------
+STEP 2 OF 4
+04 / 8
+Start fresh between tasks
+The row you'll see most: Start fresh when you switch tasks. Stale context is sent again with every message, so old chat keeps costing you.
+A
+Clear it
+claude
+$   /rename my-login-page
+$   /clear
+B
+Come back later if you need it
+claude
+$   /resume
+C
+Need to keep going? Compact it
+claude
+$   /compact Focus on code samples and API usage
+/clear vs /compact: /clear costs nothing. /compact reads the whole conversation to summarize it, so compacting a big context is itself a big request. Use it before you step away, not at the last second.
+----------------------------------------
+STEP 3 OF 4
+05 / 8
+Turn off the skills you don't use
+Every skill you have installed adds a short description to each request. A second row on your screen points at them.
+A
+The fast way
+Press f on the /usage screen. Claude checks what you have actually used and proposes a list. It shows each change first and asks before it applies anything.
+B
+The manual way
+Run /skills, highlight a skill, press Space to cycle its state, then Esc to save.
+settings: skillOverrides
+WHAT /skills WRITES
+{
+"skillOverrides"  : {
+"deploy"  :
+"off"
+}
+}
+Plugin skills are different: the docs say skillOverrides doesn't affect them. Manage those with /plugin instead. And keep anything you really use: only "off" hides a skill completely.
+----------------------------------------
+STEP 4 OF 4
+06 / 8
+What f actually does
+The hint at the bottom says something like f to fix 1 of 2. It only acts on the rows it can.
+/effort high  Row ends in an /effort command
+Claude Code runs it for you.
+run /clear  Row says "run" and a command
+Nothing happens. You run it yourself.
+Trim CLAUDE.md  Anything else
+Claude gets a step, and shows you each change before making it.
+What Claude is asked to do
+"Fix what /usage flagged. Show me each change before you make it."
+Read before you say yes. Check the list, remove anything you still need, then approve. Requires Claude Code 2.1.305 or later.
+----------------------------------------
+THE CHEAT SHEET
+07 / 8
+A row on /usage: what to do
+/clear  Start fresh when you switch tasks
+/rename first, /resume to return.
+/compact  Compact before you step away
+Add focus: /compact Focus on test output.
+f or /skills  Turn off skills you don't use
+Plugin skills: /plugin.
+/effort  Lower the effort level
+Thinking is billed as output tokens.
+/mcp  Disconnect servers you don't use
+Each connected server shows in the table.
+CLAUDE.md  Trim a long CLAUDE.md
+Docs suggest under 200 lines.
+Also in the docs: Sonnet handles most coding tasks, so switch with /model and keep Opus for hard problems. See the opusplan guide for a one-command version.
+----------------------------------------
+YOU'RE SET
+08 / 8
+Look first.
+Then fix one thing.
+/usage to see what's eating it.
+/clear between unrelated tasks.
+f to fix what it can, after you read it.
+Docs: code.claude.com/docs/en/costs
+----------------------------------------
