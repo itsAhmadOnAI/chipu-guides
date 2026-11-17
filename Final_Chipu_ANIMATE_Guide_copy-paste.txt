@@ -1,0 +1,38 @@
+ANIMATE GUIDE (copy-paste version)
+Source: https://www.remotion.dev/docs/ai/claude-code , https://www.remotion.dev/docs/ai/skills , https://www.remotion.dev/docs/cli/render , https://www.remotion.dev/docs/license/pricing
+
+MAKE AN ANIMATED VIDEO WITH CLAUDE CODE (Remotion + its Claude skills)
+
+You need: Node.js, and Claude Code on a paid Claude plan (the docs say most coding agents need a paid subscription).
+Honest note: Chipu himself is drawn with Python and ffmpeg, not Remotion. Remotion is the documented way to do this, so that's what this guide teaches.
+
+STEP 1: Make a blank project
+  npx create-video --yes --blank my-video
+  cd my-video
+
+STEP 2: Add the Claude skills (inside the project folder)
+  npx remotion skills add
+Skills you can call as slash commands in Claude Code:
+  /remotion-create   make a video from a prompt (docs example: "Make a promo video for a record store")
+  /remotion-studio   open the preview
+  /remotion-render   render the video (or a still)
+  /remotion-markup   animated text and titles (docs example: an animated title card)
+Without a Remotion project yet: npx skills add remotion-dev/skills  (or: npx create-video@latest --skills)
+
+STEP 3: Start the preview and open Claude (two terminals, both in the project folder)
+  Terminal 1:  npm run dev
+  Terminal 2:  cd my-video
+               claude
+
+STEP 4: Describe it, then render
+  /remotion-create Make a promo video for a record store
+  Check the preview, ask Claude for changes, then:
+  /remotion-render
+Command line instead (use the composition ID shown in Studio; MyComposition is just the docs' example):
+  npx remotion render MyComposition out/video.mp4
+Without a codec flag, Remotion renders H.264.
+
+LICENCE
+Remotion's pricing page says the free licence is "for individuals and companies of up to 3 people". Larger companies need a company licence. The /remotion-license skill finds the terms.
+
+Docs: remotion.dev/docs/ai/claude-code
