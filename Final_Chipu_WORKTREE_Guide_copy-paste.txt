@@ -1,0 +1,45 @@
+WORKTREE GUIDE: run two Claudes on one project at the same time (copy-paste version)
+Facts checked against code.claude.com/docs/en/worktrees and /common-workflows, `claude --help` (Claude Code 2.1.328) and a test in a throwaway git repo.
+
+WHAT IT IS
+A git worktree is a separate working folder with its own files and its own branch. It shares the same repository history as your main folder. Give each Claude session its own worktree and their edits don't collide.
+You need a git project with at least one commit, and Claude Code. In a folder without git, --worktree stops with "Can only use --worktree in a git repository": run git init and make a first commit, then retry.
+
+STEP 1: START CLAUDE IN A WORKTREE
+cd my-project
+claude --worktree feature-a
+(-w is the short form.) Claude creates .claude/worktrees/feature-a/ at your repository root, on a new branch named worktree-feature-a.
+First time in this folder? Run plain claude there once and accept the trust prompt, or --worktree exits with an error.
+Tip: add .claude/worktrees/ to your .gitignore.
+
+STEP 2: A SECOND TERMINAL
+cd my-project
+claude -w feature-b
+Now two Claudes work side by side, each in its own copy. Leave the name out and Claude makes one up (like bright-running-fox). If a worktree with that name already exists, Claude opens it. You can also ask inside a session: "work in a worktree".
+
+STEP 3: SET UP EACH WORKTREE
+A worktree is a fresh checkout. Ask Claude to install dependencies, or run your setup in the worktree folder.
+To copy gitignored files such as .env into every new worktree, add a .worktreeinclude file at the project root (.gitignore syntax; only files that are also gitignored are copied):
+.env
+.env.local
+config/secrets.json
+New worktrees branch from your repository's default branch on the remote (usually main), so your unpushed commits are not in them. To branch from your current work, set worktree.baseRef to "head" in settings.
+
+WHEN YOU'RE DONE
+On exit, Claude checks the worktree for changes and new commits.
+- Nothing changed: an unnamed session's worktree is removed automatically; a named session asks first.
+- Has work in it: Claude asks keep or remove. Keep preserves the folder and branch. Remove deletes both, with the work.
+- Come back later: claude --worktree feature-a --resume (Claude prints this on exit)
+Each worktree is a normal branch (worktree-feature-a): merge it or open a pull request as usual.
+git worktree list
+git worktree remove .claude/worktrees/feature-a
+
+CHEAT SHEET
+claude -w name                  start Claude in a new worktree (.claude/worktrees/name)
+second terminal, other name     the second parallel session
+.worktreeinclude                copy .env files into new worktrees
+claude --worktree name --resume return to a kept worktree
+git worktree list               see all worktrees
+claude --worktree "#1234"       start from pull request 1234 (.claude/worktrees/pr-1234)
+
+Docs: https://code.claude.com/docs/en/worktrees
