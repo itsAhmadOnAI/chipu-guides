@@ -1,0 +1,44 @@
+CODE MODE GUIDE: turn on Claude Code's experimental Code Mode (copy-paste version)
+Facts checked against https://code.claude.com/docs/en/code-mode (read 2026-11-21).
+
+WHAT IT IS
+Without Code Mode, Claude asks for each tool call (Bash, Read, Edit) directly and reads every result before it decides what to do next. With Code Mode, Claude writes a piece of JavaScript that makes the tool calls, and Claude Code runs that code in your session. One piece of code can run commands in parallel, use one result in the next call, and return the part of the output that Claude needs to read.
+Good fits (from the docs): a change that repeats across many files, a search whose results need filtering before Claude reads them, several independent commands that can run at the same time.
+Honest note: the docs call Code Mode experimental and off by default, and say it may change or be removed in any release. They do not promise it is faster or cheaper: test it on your own work.
+
+STEP 1: UPDATE, THEN SWITCH IT ON
+You need Claude Code v2.1.323 or later.
+claude --version
+claude update
+Then start Claude with the variable set to 1.
+macOS, Linux, WSL:
+CLAUDE_CODE_EXPERIMENTAL_CODE_MODE=1 claude
+Windows PowerShell:
+$env:CLAUDE_CODE_EXPERIMENTAL_CODE_MODE = "1"
+claude
+Always on? Put it in ~/.claude/settings.json:
+{"env": {"CLAUDE_CODE_EXPERIMENTAL_CODE_MODE": "1"}}
+Claude Code ignores this variable in a project's own settings files, so a repository you clone can't turn Code Mode on for you.
+
+STEP 2: GIVE IT A BIG JOB
+The first time, Claude Code asks you to confirm. Choose "Yes, turn on Code Mode". It restarts and shows this near the top: Code Mode (experimental) is on
+Try a job with many related calls, for example: rename getUser to fetchUser everywhere in this project.
+Press Ctrl+O to open the transcript viewer. Each piece of code appears there as a collapsed Code row; expand it to read the JavaScript, and press Ctrl+O again to go back.
+To stop code while Claude is responding or waiting for it, press Esc.
+
+WHAT YOU NEED
+Claude Code v2.1.323 or later (native build, either release channel).
+A Claude subscription or Console account (not a gateway, Amazon Bedrock, Microsoft Foundry or the other cloud providers).
+Model: Claude Opus 5.5, Sonnet 5.5, Haiku 5.5 or Fable 5.2.
+An interactive claude session in a terminal (not the VS Code panel, the Desktop app or cloud sessions).
+Windows: Git for Windows installed.
+Blocked by: an API key helper, OpenTelemetry export, DISABLE_TELEMETRY, and organizations on the HIPAA configuration or zero data retention.
+
+SAFETY AND LIMITS
+Your deny and ask rules and PreToolUse hooks still apply to each call. In auto and bypassPermissions modes, code can run from start to finish without a permission prompt.
+The JavaScript itself and its file, web and MCP tool calls run outside the sandbox. A container or VM can isolate them.
+You can resume a Code Mode session only in the terminal, with Code Mode on.
+Code that waits stops after ten minutes unless it runs in the background.
+Turn it off: remove CLAUDE_CODE_EXPERIMENTAL_CODE_MODE from your shell and from ~/.claude/settings.json, then start a new session (or set it to 0).
+Start on a spare project until you trust what it does with your files and commands.
+Docs: https://code.claude.com/docs/en/code-mode

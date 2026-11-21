@@ -9,3 +9,4 @@ Free step-by-step guides for Claude Code tips from the Chipu reels.
 | Find what is eating your Claude limit with `/usage` (usage cheat sheet) | Comment USAGE | [Final_Chipu_USAGE_Guide.pdf](Final_Chipu_USAGE_Guide.pdf) · [copy-paste text](Final_Chipu_USAGE_Guide_copy-paste.txt) |
 | Make animated videos with Claude Code (Remotion + its Claude skills) | Comment ANIMATE | [Final_Chipu_ANIMATE_Guide.pdf](Final_Chipu_ANIMATE_Guide.pdf) · [copy-paste text](Final_Chipu_ANIMATE_Guide_copy-paste.txt) |
 | Run two Claudes at once on one project with `claude -w` (git worktrees) | Comment WORKTREE | [Final_Chipu_WORKTREE_Guide.pdf](Final_Chipu_WORKTREE_Guide.pdf) · [copy-paste text](Final_Chipu_WORKTREE_Guide_copy-paste.txt) |
+| Turn on the experimental Code Mode in Claude Code (one block of code, many calls) | Comment CODEMODE | [Final_Chipu_CODEMODE_Guide.pdf](Final_Chipu_CODEMODE_Guide.pdf) · [copy-paste text](Final_Chipu_CODEMODE_Guide_copy-paste.txt) |
