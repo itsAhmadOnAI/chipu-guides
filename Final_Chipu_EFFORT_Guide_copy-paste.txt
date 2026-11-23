@@ -1,0 +1,20 @@
+CHIPU · EFFORT GUIDE (copy-paste version)
+Source: code.claude.com/docs/en/model-config (Adjust effort level) and code.claude.com/docs/en/costs
+
+STEP 1: small job? Lower the effort. Inside Claude Code type:
+/effort low
+
+Saved as your default for later sessions. For this session only: type /effort, pick low, press s (v2.1.257+).
+Go back:
+/effort medium
+One session only, from the terminal:
+claude --effort low
+
+STEP 2: hard job? Add this word anywhere in ONE prompt:
+ultrathink why do the login tests fail?
+
+Claude reasons deeper on that turn only; your session effort stays the same.
+In the terminal the word shows in rainbow colours when it raises the turn to xhigh (v2.1.311+).
+
+Levels: low, medium, high, xhigh, max. Default on Fable 5.2, Opus 5.5, Sonnet 5.5, Haiku 5.5 = medium.
+If CLAUDE_CODE_EFFORT_LEVEL is set, it overrides /effort.

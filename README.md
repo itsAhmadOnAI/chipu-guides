@@ -10,3 +10,4 @@ Free step-by-step guides for Claude Code tips from the Chipu reels.
 | Make animated videos with Claude Code (Remotion + its Claude skills) | Comment ANIMATE | [Final_Chipu_ANIMATE_Guide.pdf](Final_Chipu_ANIMATE_Guide.pdf) · [copy-paste text](Final_Chipu_ANIMATE_Guide_copy-paste.txt) |
 | Run two Claudes at once on one project with `claude -w` (git worktrees) | Comment WORKTREE | [Final_Chipu_WORKTREE_Guide.pdf](Final_Chipu_WORKTREE_Guide.pdf) · [copy-paste text](Final_Chipu_WORKTREE_Guide_copy-paste.txt) |
 | Turn on the experimental Code Mode in Claude Code (one block of code, many calls) | Comment CODEMODE | [Final_Chipu_CODEMODE_Guide.pdf](Final_Chipu_CODEMODE_Guide.pdf) · [copy-paste text](Final_Chipu_CODEMODE_Guide_copy-paste.txt) |
+| Spend less usage on small jobs with `/effort low` + `ultrathink` for hard ones | Comment EFFORT | [Final_Chipu_EFFORT_Guide.pdf](Final_Chipu_EFFORT_Guide.pdf) · [copy-paste text](Final_Chipu_EFFORT_Guide_copy-paste.txt) |
